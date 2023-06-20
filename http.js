@@ -11,14 +11,14 @@ const operadoras = [
 const contatos = [
   {
     id: 1,
-    nome: "Bruno",
+    nome: "Sandra",
     telefone: "9999-2222",
     data: new Date(),
     operadora: operadoras[0],
   },
   {
     id: 1,
-    nome: "Bruno",
+    nome: "Mariana",
     telefone: "9999-3333",
     data: new Date(),
     operadora: operadoras[1],
@@ -35,11 +35,9 @@ const contatos = [
 app.interceptor(function (req, res, next) {
   res.setHeader("Access-Control-Allow-Origin", "*");
   res.setHeader("Access-Control-Allow-Headers", "Content-Type");
-  next();
-});
-
-app.interceptor(function (req, res, next) {
-  res.setHeader("Content-Type", "application/json");
+  res.setHeader("Access-Control-Allow-Methods", "OPTIONS,POST,GET");
+  res.setHeader("Access-Control-Max-Age", 2592000);
+  res.setHeader("Content-Type", "application/json;charset=utf-8");
   next();
 });
 
@@ -59,6 +57,6 @@ app.post("/contatos", function (req, res) {
   res.end();
 });
 
-app.options("/options", function (req, res) {
+app.options("/contatos", function (req, res) {
   res.end();
 });
